@@ -158,3 +158,37 @@ Pour un PC gaming standard (ex. Ryzen 7800X3D ou i5-13600K, 32 Go de RAM) :
 > 📊 **Règle d'or inchangée** : Process Lasso est un outil d'**ordonnancement**, pas de magie. 
 > Configurez peu, ciblez vos jeux, mesurez avec [CapFrameX](benchmarks.md),
 > et gardez uniquement ce qui apporte un gain mesurable sur votre machine.
+
+---
+
+## Appendix
+
+### Processeurs - CCD / hybride / 3D cache
+
+Petit rappel des notions avant :
+
+- **CCD** (Core Complex Die) : concept **AMD uniquement** — un "chiplet" contenant jusqu'à 8 cœurs classiques. Un CPU peut en avoir 1 ou 2 (voire 8+ sur Threadripper/EPYC).
+- **Hybride P-core / E-core** : concept **Intel** (depuis la 12ᵉ gén.) — gros cœurs performants (P) + petits cœurs efficaces (E) sur une seule puce.
+
+| Gamme | Marque | Architecture | Type | Nb de CCD | Config cœurs | Exemples |
+|---|---|---|---|---|---|---|
+| **Ryzen 3 / 5** (jusqu'à 6c) | AMD | Zen 2 à 5 | CCD classique | **1 CCD** | 4-6 cœurs simples | 5600X, 7600, 9600X |
+| **Ryzen 7** (8c) | AMD | Zen 2 à 5 | CCD classique | **1 CCD** | 8 cœurs simples | 5800X, 7700X, 9700X |
+| **Ryzen 7 X3D** (8c) | AMD | Zen 3 à 5 | CCD + 3D V-Cache | **1 CCD** | 8 cœurs simples | 5800X3D, 7800X3D, 9800X3D |
+| **Ryzen 9** (12-16c) | AMD | Zen 2 à 5 | Multi-CCD | **2 CCD** | 12-16 cœurs simples (6+6 ou 8+8) | 5900X, 7900X, 9950X |
+| **Ryzen 9 X3D** | AMD | Zen 4 & 5 | Multi-CCD + V-Cache sur 1 seul CCD | **2 CCD** | 12-16 cœurs, cache 3D sur un seul CCD | 7950X3D, 9950X3D |
+| **Ryzen mobile / APU** | AMD | Zen 4c / Zen 5c | Dense cores (monolithique) | Pas de CCD | Cœurs "c" compacts | Ryzen 5 7540U, Strix Point |
+| **Threadripper / EPYC** | AMD | Zen 4 & 5 | Multi-CCD extrême | **4 à 12 CCD** | 24 à 96+ cœurs | TR 7960X, EPYC 9654 |
+| **Intel ≤ 11ᵉ gén.** | Intel | Jusqu'à Rocket Lake | Monolithique | — | Cœurs simples (pas d'hybride) | i7-11700K (8c) |
+| **Intel 12ᵉ / 13ᵉ / 14ᵉ gén. (i5/i7/i9)** | Intel | Alder / Raptor Lake | **Hybride** | — | P-cores + E-cores | 12600K (6P+4E), 13600K (6P+8E), 14700K (8P+12E), 14900K (8P+16E) |
+| **Intel 12ᵉ-14ᵉ gén. entrée (i3/Pentium)** | Intel | Alder / Raptor Lake | P-cores uniquement | — | 2-6 P-cores, pas d'E-core | i3-12100 (4P), i5-12400 (6P) |
+| **Core Ultra série 200S (desktop)** | Intel | Arrow Lake | **Hybride** (tuiles/chiplets) | — | P + E, sans Hyper-Threading | Ultra 5 245K (6P+8E), Ultra 9 285K (8P+16E) |
+| **Core Ultra 200HX (mobile)** | Intel | Arrow Lake-HX | **Hybride** (tuiles, comme le desktop 200S) | —  | P-cores + E-cores, sans Hyper-Threading | Ultra 7 255HX, Ultra 9 285HX |
+| **Core Ultra série 100/200 (mobile)** | Intel | Meteor / Lunar Lake | **Hybride** | — | P + E (+ LP E-cores) | Ultra 7 155H, Ultra 7 258V |
+
+**Points clés à retenir**
+
+- **AMD ne fait pas de P/E-core** : tous ses cœurs desktop sont identiques ("simples"). Son équivalent de la modularité, c'est le nombre de CCD.
+- **Intel ne parle jamais de CCD** : sa modularité, c'est l'hybridation P-core/E-core (et chez Core Ultra, des "tuiles" regroupées sur une puce).
+- **Cas particulier des Ryzen 9 X3D** : 2 CCD mais seul l'un des deux a le 3D V-Cache — c'est pour ça que le 7800X3D/9800X3D (1 seul CCD) est souvent préféré en jeu pur : pas de répartition à gérer entre les CCD.
+- **Pour le gaming type Warzone** : un Ryzen 7 7800X3D/9800X3D (1 CCD, 8 cœurs simples) ou un i5/i7 hybride récent sont les références du moment.
