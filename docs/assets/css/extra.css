@@ -4,13 +4,14 @@
 
 
 /* Fluid */
-/*
-.md-grid {
-  max-width: 100%;
-  margin-left: 2rem;
-  margin-right: 2rem;
+
+@media screen and (min-width:125em) {
+    .md-grid {
+      max-width: 100%;
+      margin: 0 5rem;
+    }
 }
-*/
+
 
 h2 {
   border-bottom: 1px solid;
