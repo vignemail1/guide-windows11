@@ -1,51 +1,125 @@
 [project]
-name = "Guide Windows 11"
+site_name = "Guide Windows 11"
 site_description = "Guide complet d'installation, d'optimisation et de gestion de Windows 11 (24H2 → 26H2) pour débutants"
 site_url = "https://vignemail1.github.io/guide-windows11/"
 repo_url = "https://github.com/vignemail1/guide-windows11"
 docs_dir = "docs"
 site_dir = "site"
 
+nav = [
+{"Accueil" = "index.md"},
+{"Installation" = [
+  {"Préparation" = "installation/preparation.md"},
+  {"Installation avec compte local" = "installation/compte-local.md"},
+  {"Installation des pilotes" = "installation/pilotes.md"},
+]},
+{"Optimisation" = [
+  {"Chris Titus Tech WinUtil" = "optimisation/chris-titus.md"},
+  {"O&O ShutUp10++" = "optimisation/shutup10.md"},
+]},
+{"Trucs et astuces" = [
+  {"Diagnostic" = "astuces/diagnostic.md"},
+  {"Mises à jour et maintenance" = "astuces/maintenance.md"},
+  {"Commandes utiles" = "astuces/commandes.md"},
+]},
+# {"Déploiement CI/CD" = "cicd.md"}
+]
+
+
+extra_css = [
+  "assets/css/extra.css"
+]
+extra_javascript = [
+  "assets/js/extra.js",
+  "assets/js/external-links.js"
+]
+
+[project.extra]
+generator = false
+
 [project.theme]
-name = "zensical"
 language = "fr"
-palette = "default"
-font = "Inter"
-
-[project.theme.features]
-navigation_tabs = true
-navigation_top = true
-toc_integrate = false
-content_action = true
-
-[markdown.extensions]
-enabled = [
-  "admonition",
-  "attr_list",
-  "footnotes",
-  "md_in_html",
-  "tables",
-  "pymdownx.details",
-  "pymdownx.superfences",
-  "pymdownx.highlight",
-  "pymdownx.tabbed",
-  "pymdownx.tasklist",
+favicon = "assets/img/authors/vignemail1.png"
+logo = "assets/img/authors/vignemail1.png"
+features = [
+  "announce.dismiss",
+  # "content.action.edit",
+  # "content.action.view",
+  "content.code.annotate",
+  "content.code.copy",
+  "content.code.select",
+  "content.footnote.tooltips",
+  "content.tabs.link",
+  "content.tooltips",
+  # "header.autohide",
+  # "navigation.expand",
+  "navigation.footer",
+  "navigation.indexes",
+  "navigation.instant",
+  "navigation.instant.prefetch",
+  # "navigation.instant.progress",
+  "navigation.path",
+  # "navigation.prune",
+  "navigation.sections",
+  "navigation.tabs",
+  "navigation.tabs.sticky",
+  "navigation.top",
+  "navigation.tracking",
+  "search.highlight",
+  "toc.follow",
+  "toc.integrate",
 ]
 
-[nav]
-"Accueil" = "index.md"
-"Installation" = [
-  "Préparation" = "installation/preparation.md",
-  "Installation avec compte local" = "installation/compte-local.md",
-  "Installation des pilotes" = "installation/pilotes.md",
+[project.theme.font]
+text = "Open Sans"
+code = "Jetbrains Mono"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to system preference"
+
+[project.markdown_extensions]
+abbr = {}
+admonition = {}
+attr_list = {}
+def_list = {}
+footnotes = {}
+md_in_html = {}
+toc.permalink = true
+pymdownx.arithmatex.generic = true
+pymdownx.betterem = {}
+pymdownx.caret = {}
+pymdownx.details = {}
+pymdownx.emoji.emoji_generator = "zensical.extensions.emoji.to_svg"
+pymdownx.emoji.emoji_index = "zensical.extensions.emoji.twemoji"
+pymdownx.highlight.anchor_linenums = true
+pymdownx.highlight.line_spans = "__span"
+pymdownx.highlight.pygments_lang_class = true
+pymdownx.inlinehilite = {}
+pymdownx.keys = {}
+pymdownx.magiclink = {}
+pymdownx.mark = {}
+pymdownx.smartsymbols = {}
+# pymdownx.snippets.base_path = "includes"
+pymdownx.superfences.custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
 ]
-"Optimisation" = [
-  "Chris Titus Tech WinUtil" = "optimisation/chris-titus.md",
-  "O&O ShutUp10++" = "optimisation/shutup10.md",
-]
-"Trucs et astuces" = [
-  "Diagnostic" = "astuces/diagnostic.md",
-  "Mises à jour et maintenance" = "astuces/maintenance.md",
-  "Commandes utiles" = "astuces/commandes.md",
-]
-"Déploiement CI/CD" = "cicd.md"
+pymdownx.tabbed.alternate_style = true
+pymdownx.tabbed.combine_header_slug = true
+pymdownx.tasklist.custom_checkbox = true
+pymdownx.tilde = {}
+
+[project.plugins.glightbox]

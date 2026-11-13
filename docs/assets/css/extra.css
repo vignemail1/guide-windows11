@@ -1,0 +1,31 @@
+:root>* {
+  --md-typeset-a-color: var(--md-default-fg-color--light);
+}
+
+
+/* Fluid */
+/*
+.md-grid {
+  max-width: 100%;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+*/
+
+h2 {
+  border-bottom: 1px solid;
+}
+
+.location-map {
+  width: 100%;
+  margin-block: 1rem;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+
+.location-map iframe {
+  display: block;
+  width: 100%;
+  height: clamp(280px, 50vw, 420px);
+  border: 0;
+}
