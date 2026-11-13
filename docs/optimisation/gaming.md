@@ -31,6 +31,11 @@ L'approche correcte :
 2. **Changez une chose à la fois** — sinon vous ne saurez jamais ce qui a fonctionné (ou cassé).
 3. **Mesurez à nouveau** — gardez uniquement les réglages qui apportent un gain réel sur VOTRE machine.
 
+!!! info "Page dédiée aux benchmarks"
+    La procédure complète de mesure (CapFrameX, PresentMon, 3DMark, CrystalDiskMark, HWiNFO)
+    et l'interprétation des résultats sont détaillées sur la page
+    **[Benchmarks et mesures](benchmarks.md)**.
+
 ---
 
 ## 🔧 1. Drivers : la fondation
@@ -47,71 +52,62 @@ L'approche correcte :
     Une installation de driver par-dessus une autre laisse des résidus.
     DDU permet de repartir de zéro.
 
-### NVCleanstall — un driver NVIDIA allégé (utilisateurs NVIDIA)
+#### NVCleanstall — un driver NVIDIA allégé
 
-Le package officiel NVIDIA installe de nombreux composants inutiles en jeu :
-télémétrie, GeForce Experience/NVIDIA App, services d'arrière-plan,
-drivers audio HDMI, USB-C, ShadowPlay…
-**NVCleanstall** (techpowerup.com/download/nvcleanstall) permet de reconstruire
-un installeur **sur mesure** qui ne contient que ce dont vous avez besoin.
+Le package officiel NVIDIA installe de nombreux composants dont la plupart des joueurs
+n'ont pas besoin : télémétrie, NVIDIA App, services d'arrière-plan, drivers audio HDMI,
+USB-C… **NVCleanstall** (techpowerup.com) reconstruit un installeur sur mesure.
 
 **Mode d'emploi :**
 
-1. Lancez NVCleanstall (aucune installation requise, exécutable portable).
-2. Laissez-le **détecter le meilleur driver** pour votre carte, ou choisissez une version précise.
-3. **Décochez tout ce qui est superflu** :
-      - ❌ NVIDIA App / GeForce Experience (si vous ne streamez pas)
-      - ❌ Telemetry (télémétrie)
-      - ❌ Drivers audio HDMI (si votre écran n'a pas de haut-parleurs utilisés)
-      - ❌ USB-C, PhysX (gardez PhysX uniquement si vos jeux l'exigent — la plupart des jeux modernes non)
-4. Gardez au minimum : **Display Driver** (obligatoire) et éventuellement **HD Audio** selon votre setup.
-5. Installez le package généré, redémarrez.
+1. Lancez NVCleanstall et laissez-le détecter la dernière version du driver.
+2. Décochez les composants superflus :
+   - ❌ **Telemetry** (télémétrie)
+   - ❌ **NVIDIA App / GeForce Experience** (si vous ne l'utilisez pas)
+   - ❌ **HD Audio Driver** (si votre écran n'a pas de haut-parleurs ou si vous n'utilisez pas le son via HDMI/DisplayPort)
+   - ❌ **USB-C Driver** (si votre carte n'a pas de port USB-C utilisé)
+   - ❌ **PhysX** (uniquement si aucun de vos jeux anciens ne l'utilise — gardez-le en cas de doute)
+3. Gardez uniquement le **Display Driver** (obligatoire) et, si besoin, **PhysX**.
+4. Cliquez sur **Install** — l'outil télécharge le driver officiel et le réinstalle en version allégée.
 
-!!! tip "Gain réel"
-    Moins de services en arrière-plan = moins de RAM consommée,
-    moins de processus qui se réveillent pendant une partie.
-    Combinez NVCleanstall **après** un passage de DDU pour une base vraiment propre.
+!!! tip "Combinaison recommandée"
+    Pour une base vraiment propre : **DDU en mode sans échec**, puis installation via **NVCleanstall**.
 
-!!! warning "Sans NVIDIA App / GeForce Experience"
-    Vous perdez la mise à jour automatique des drivers et les overlays ShadowPlay/Ansel.
-    Il faudra vérifier les nouveaux drivers **manuellement** (relancez simplement
-    NVCleanstall de temps en temps : il détecte les nouvelles versions).
+!!! warning "Conséquence"
+    Sans la NVIDIA App, les mises à jour de driver ne seront plus notifiées automatiquement :
+    pensez à vérifier manuellement tous les 1-2 mois. Vous perdez aussi ShadowPlay (enregistrement).
 
-### NVIDIA Profile Inspector — le panneau de contrôle débloqué
+#### NVIDIA Profile Inspector — le panneau de contrôle débloqué
 
-**NVIDIA Profile Inspector** (github.com/Orbmu2k/nvidiaProfileInspector) donne accès
-à **tous les réglages cachés des profils de drivers NVIDIA**, bien au-delà de ce
-que le NVIDIA Control Panel affiche. Chaque jeu possède un profil driver interne :
-cet outil permet de le modifier finement.
+**NVIDIA Profile Inspector** expose des centaines de réglages de driver que le panneau de
+configuration officiel masque, profil par profil (un profil = un jeu).
 
 **Réglages utiles pour le gaming compétitif :**
 
-| Réglage | Valeur recommandée | Effet |
-|---------|--------------------|-------|
-| **Ultra Low Latency Mode** | `Ultra` (ou géré par le jeu) | Réduit la file d'attente de rendu → moins de latence d'entrée |
-| **Maximum Pre-Rendered Frames** | `1` | Une seule image en attente → input lag minimal |
-| **Shader Cache Size** | `10 GB` ou `Unlimited` | Évite les saccades de compilation de shaders |
-| **Texture filtering – Quality** | `High performance` | Priorise les performances sur la qualité de filtrage |
-| **Power management mode** | `Prefer maximum performance` | Le GPU ne descend plus en fréquence entre les scènes |
-| **Preferred refresh rate** | `Highest available` | Force le taux de rafraîchissement maximal |
-| **Vertical Sync** | `Off` (gérez en jeu) | Évite la latence de la VSync globale |
+| Réglage | Valeur conseillée | Effet |
+|---------|-------------------|-------|
+| **Ultra Low Latency** | **Ultra** | Réduit la file d'attente de rendu → moins de latence d'entrée |
+| **Maximum Pre-Rendered Frames** | `1` | Équivalent classique (appliqué si Ultra Low Latency est « Off ») |
+| **Shader Cache Size** | **10 GB** | Limite les recompilations de shaders en jeu (stuttering) |
+| **Texture filtering - Quality** | **High performance** | Gain marginal de FPS, perte visuelle quasi nulle |
+| **Power management mode** | **Prefer maximum performance** | Évite les baisses de fréquence du GPU en jeu |
+| **Preferred refresh rate** | **Highest available** | Force le taux de rafraîchissement maximal |
 
 **Mode d'emploi :**
 
-1. Téléchargez l'archive, extrayez, lancez `nvidiaProfileInspector.exe` (portable).
-2. En haut, choisissez le **profil du jeu** concerné dans la liste déroulante
-   (ou `_GLOBAL_DRIVER_PROFILE` pour appliquer à tout).
-3. Modifiez les valeurs, cliquez sur **« Apply changes »** en haut à droite.
-4. Relancez le jeu — pas de redémarrage nécessaire.
+1. Téléchargez NVIDIA Profile Inspector (github.com/Orbmu2k/nvidiaProfileInspector).
+2. En haut, sélectionnez le **profil du jeu** dans la liste déroulante (ou `_GLOBAL_DRIVER_PROFILE` pour un réglage global).
+3. Modifiez les valeurs, puis cliquez sur **Apply changes** (en haut à droite).
+4. Pas de redémarrage nécessaire — relancez simplement le jeu.
 
-!!! warning "Modifiez profil par profil, jamais tout d'un coup"
-    Un réglage qui fluidifie un jeu peut en casser un autre (plantage, artefacts).
-    Notez la valeur d'origine avant chaque changement : le bouton **« Restore »**
-    remet le profil aux valeurs NVIDIA par défaut.
+!!! warning "Précautions"
+    - Ne modifiez que les profils des jeux concernés plutôt que le profil global, sauf si vous savez ce que vous faites.
+    - Notez la valeur d'origine avant chaque changement (ou utilisez le bouton **Restore** pour revenir aux valeurs NVIDIA par défaut).
 
-!!! note "Conflit possible avec le NVIDIA Control Panel"
-    Si vous réglez une option ici, laissez-la sur **« Laisser l'application 3D décider »**
-    dans le Control Panel pour éviter que les deux se contredisent.
+!!! note "Conflit avec le NVIDIA Control Panel"
+    Si un réglage existe dans les deux outils, le dernier appliqué gagne. Pour éviter les confusions,
+    laissez le NVIDIA Control Panel sur « Laisser l'application 3D décider » pour ces options et
+    gérez-les exclusivement dans Profile Inspector.
 
 ### Chipset — souvent oublié, jamais inutile
 
@@ -260,8 +256,8 @@ netsh int tcp set supplemental custom
 
 | Outil | Rôle |
 |-------|------|
-| **NVCleanstall** | Installation de drivers NVIDIA allégés, sans télémétrie ni composants inutiles |
-| **NVIDIA Profile Inspector** | Réglages avancés et cachés des profils de drivers NVIDIA (latence, cache shaders…) |
+| **NVCleanstall** | Installation allégée et maîtrisée des drivers NVIDIA |
+| **NVIDIA Profile Inspector** | Accès aux réglages de driver cachés (latence, shader cache, filtrage) |
 | **MSI Afterburner + RivaTuner** | Monitoring temps réel + limiteur FPS (plafonnez 2-3 FPS sous le taux de rafraîchissement) |
 | **CapFrameX** / **PresentMon** | Analyse des frametimes — la mesure objective avant/après chaque tweak |
 | **DDU** | Réinstallation propre des drivers GPU |
@@ -271,7 +267,7 @@ netsh int tcp set supplemental custom
 | **CrystalDiskMark** | Vérifie que votre SSD NVMe tourne à pleine vitesse |
 
 !!! tip "Routine de maintenance mensuelle"
-    1. Vérifier les mises à jour GPU (relancez NVCleanstall pour voir les nouveaux drivers) + chipset.
+    1. Vérifier les mises à jour GPU (avec NVCleanstall) + chipset.
     2. Nettoyer les fichiers temporaires.
     3. Contrôler les températures sous HWiNFO après 30 min de jeu (GPU > 83 °C ou CPU > 95 °C = problème **physique**, pas logiciel).
     4. Relancer un benchmark CapFrameX sur votre jeu de référence.
@@ -282,10 +278,10 @@ netsh int tcp set supplemental custom
 
 | Priorité | Action | Gain attendu |
 |----------|--------|--------------|
-| 🥇 | Drivers GPU/chipset propres (DDU + NVCleanstall pour NVIDIA) | Énorme |
+| 🥇 | Drivers GPU/chipset propres (DDU + NVCleanstall) | Énorme |
 | 🥈 | Plan d'alimentation haute performance + planification GPU matérielle | Fort |
-| 🥉 | Limiteur FPS (RivaTuner) + Ultra Low Latency (Profile Inspector) | Fort (fluidité / latence) |
+| 🥉 | Limiteur FPS (RivaTuner) + Ultra Low Latency (Profile Inspector) | Fort (fluidité et latence) |
 | 4 | Registre (responsiveness, throttling réseau) | Modéré |
 | 5 | BCDEdit (timer, TSC) | Variable — à tester |
 
-> 📊 **Règle d'or** : si un changement n'apporte aucun gain mesurable sur VOTRE machine avec VOS jeux… revenez en arrière. Le meilleur réglage est celui que vous avez validé vous-même.
+> 📊 **Règle d'or** : si un changement n'apporte aucun gain mesurable sur VOTRE machine avec VOS jeux… revenez en arrière. Le meilleur réglage est celui que vous avez validé vous-même. Voir **[Benchmarks et mesures](benchmarks.md)** pour savoir comment mesurer correctement.
