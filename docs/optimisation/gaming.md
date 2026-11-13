@@ -7,7 +7,7 @@
 
     **Vous les appliquez à vos risques et périls.** L'auteur de ce guide décline toute responsabilité en cas de plantage, de perte de données, de baisse de performances ou de tout autre désagrément résultant de l'application de ces réglages.
 
-    **Avant de commencer, je备份ez votre système** (point de restauration minimum, image complète idéalement) et testez chaque modification **une par une**. Si quelque chose ne fonctionne pas : revenez à votre sauvegarde, cherchez à comprendre, mais ne continuez pas à empiler les réglages à l'aveugle.
+    **Avant de commencer, sauvegardez votre système** (point de restauration minimum, image complète idéalement) et testez chaque modification **une par une**. Si quelque chose ne fonctionne pas : revenez à votre sauvegarde, cherchez à comprendre, mais ne continuez pas à empiler les réglages à l'aveugle.
 
 ---
 
@@ -27,12 +27,12 @@ Le tuning gaming ne consiste **pas** à désactiver tout Windows à l'aveugle. L
 
 | Fabricant | Outil | Méthode |
 |-----------|-------|---------|
-| **NVIDIA** | [NVIDIA App](https://www.nvidia.com) ou drivers.nvidia.com | Cochez **« Installation personnalisée » → « Effectuer une nouvelle installation »** |
-| **AMD** | [AMD Software Adrenalin](https://www.amd.com) | Utilisez **AMD Cleanup Utility** avant d'installer |
-| **Tous** | **[DDU](https://www.guru3d.com/files-details/display-driver-uninstaller-download.html)** | En cas de souci : désinstallation totale en **Mode sans échec**, puis réinstallation propre |
+| **NVIDIA** | NVIDIA App ou drivers.nvidia.com | Cochez **« Installation personnalisée » → « Effectuer une nouvelle installation »** |
+| **AMD** | AMD Software Adrenalin | Utilisez **AMD Cleanup Utility** avant d'installer |
+| **Tous** | **DDU** (guru3d.com) | En cas de souci : désinstallation totale en **Mode sans échec**, puis réinstallation propre |
 
-!!! tip "DDU = régle les 90 % des problèmes de performances GPU"
-    Une installation de driver par-dessus une autre laisse des résidus. DDU repart de zéro.
+!!! tip "DDU règle la majorité des problèmes de performances GPU"
+    Une installation de driver par-dessus une autre laisse des résidus. DDU permet de repartir de zéro.
 
 ### Chipset — souvent oublié, jamais inutile
 
@@ -53,7 +53,7 @@ Le tuning gaming ne consiste **pas** à désactiver tout Windows à l'aveugle. L
 |---------|---------------|
 | Mode de gestion de l'alimentation | **Performance maximale privilégiée** |
 | Taille du cache du nuanceur | **10 Go** (évite les recompilations de shaders en jeu) |
-| Synchronisation verticale | **Désactivée globalement** (gérez-la in-game) |
+| Synchronisation verticale | **Désactivée globalement** (gérez-la en jeu) |
 | G-Sync | Activé (fenêtré + plein écran) si votre écran le supporte |
 | Threaded optimization | **Automatique** |
 
@@ -98,7 +98,7 @@ Chemin : `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multim
 
 | Clé (DWORD) | Valeur | Effet |
 |-------------|--------|-------|
-| `SystemResponsiveness` | `0` (hex `0`) | Réserve 0 % du CPU aux tâches d'arrière-plan pendant le jeu |
+| `SystemResponsiveness` | `0` | Réserve 0 % du CPU aux tâches d'arrière-plan pendant le jeu |
 | `NetworkThrottlingIndex` | `ffffffff` | Désactive le bridage réseau multimédia |
 
 ### Planification GPU matérielle
@@ -154,23 +154,22 @@ Le plan **Ultimate Performance** est caché sur Windows 11. Pour l'activer :
 powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
 ```
 
-Puis sélectionnez-le dans **Panneau de configuration → Options d'alimentation**, ou réglez le mode d'alimentation sur **« Meilleures performances »** dans Paramètres → Système → Alimentation.
+Puis sélectionnez-le dans **Panneau de configuration → Options d'alimentation**.
 
 ### Paramètres → Jeux
 
 - **Mode Jeu** : ✅ Activé (priorise le processus de jeu).
 - **Xbox Game Bar** : ❌ Désactivée (sauf si vous l'utilisez vraiment).
 
-### Graphismes → Planification GPU matérielle
+### Planification GPU matérielle
 
 **Paramètres → Système → Affichage → Graphismes → Modifier les paramètres graphiques par défaut** → activez **« Planification du GPU à accélération matérielle »** (redémarrage requis).
 
 ### Réseau — latence
 
 ```cmd
-:: TCP optimisé pour la latence (admin)
+:: TCP optimisé pour la latence (invite admin)
 netsh int tcp set supplemental custom
-netsh int tcp set global autotuninglevel=normal
 ```
 
 - Basculez votre DNS sur `1.1.1.1` / `1.0.0.1` (Cloudflare) ou `9.9.9.9` (Quad9).
@@ -180,21 +179,21 @@ netsh int tcp set global autotuninglevel=normal
 
 ## 🧰 5. Logiciels pour maintenir les performances
 
-| Outil | Rôle | Lien |
-|-------|------|------|
-| **MSI Afterburner** + **RivaTuner** | Monitoring temps réel (frametime, températures) + limiteur FPS — plafonnez vos FPS 2-3 sous le taux de rafraîchissement pour lisser l'image | [guru3d.com](https://www.guru3d.com/files-details/msi-afterburner-beta-download.html) |
-| **CapFrameX** ou **PresentMon** | Analyse des frametimes — LA mesure objective avant/après chaque tweak | [capframex.com](https://www.capframex.com) |
-| **DDU** | Réinstallation propre des drivers GPU à chaque gros souci | [guru3d.com](https://www.guru3d.com/files-details/display-driver-uninstaller-download.html) |
-| **Process Lasso** | Affinité CPU automatique, empêche les apps de fond de voler des cœurs pendant une session | [bitsum.com](https://bitsum.com) |
-| **ISLC** (Intelligent Standby List Cleaner) | Vide la mémoire standby qui cause des micro-saccades après plusieurs heures de jeu | [majorgeeks.com](https://www.majorgeeks.com/files/details/intelligent_standby_list_cleaner.html) |
-| **HWiNFO64** | Surveillance capteurs (throttling thermique = ennemi n°1 des perfs stables) | [hwinfo.com](https://www.hwinfo.com) |
-| **CrystalDiskMark** | Vérifier que votre SSD NVMe tourne à pleine vitesse (un SSD ralenti charge les textures à la traîne) | [crystalmark.info](https://crystalmark.info) |
+| Outil | Rôle |
+|-------|------|
+| **MSI Afterburner + RivaTuner** | Monitoring temps réel + limiteur FPS (plafonnez 2-3 FPS sous le taux de rafraîchissement) |
+| **CapFrameX** / **PresentMon** | Analyse des frametimes — la mesure objective avant/après chaque tweak |
+| **DDU** | Réinstallation propre des drivers GPU |
+| **Process Lasso** | Affinité CPU automatique, empêche les apps de fond de perturber le jeu |
+| **ISLC** (Intelligent Standby List Cleaner) | Vide la mémoire standby source de micro-saccades |
+| **HWiNFO64** | Surveillance capteurs (le throttling thermique est l'ennemi n°1) |
+| **CrystalDiskMark** | Vérifie que votre SSD NVMe tourne à pleine vitesse |
 
 !!! tip "Routine de maintenance mensuelle"
     1. Vérifier les mises à jour GPU + chipset.
-    2. Nettoyer les fichiers temporaires (`cleanmgr` ou Paramètres → Stockage).
-    3. Vérifier les températures sous HWiNFO après 30 min de jeu — si le GPU dépasse 83 °C ou le CPU 95 °C, le problème est **physique** (poussière, pâte thermique), pas logiciel.
-    4. Relancer un benchmark CapFrameX sur votre jeu de référence pour détecter toute dérive.
+    2. Nettoyer les fichiers temporaires.
+    3. Contrôler les températures sous HWiNFO après 30 min de jeu (GPU > 83 °C ou CPU > 95 °C = problème **physique**, pas logiciel).
+    4. Relancer un benchmark CapFrameX sur votre jeu de référence.
 
 ---
 
