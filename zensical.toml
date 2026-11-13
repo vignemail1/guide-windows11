@@ -18,6 +18,7 @@ nav = [
   {"O&O ShutUp10++" = "optimisation/shutup10.md"},
   {"Gaming Haute Performance" = "optimisation/gaming.md"},
   {"Benchmarks et mesures" = "optimisation/benchmarks.md"},
+  {"Tweak à éviter" = "optimisation/tweaks-a-eviter.md"},
 ]},
 {"Trucs et astuces" = [
   {"Diagnostic" = "astuces/diagnostic.md"},
