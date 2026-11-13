@@ -47,6 +47,72 @@ L'approche correcte :
     Une installation de driver par-dessus une autre laisse des résidus.
     DDU permet de repartir de zéro.
 
+### NVCleanstall — un driver NVIDIA allégé (utilisateurs NVIDIA)
+
+Le package officiel NVIDIA installe de nombreux composants inutiles en jeu :
+télémétrie, GeForce Experience/NVIDIA App, services d'arrière-plan,
+drivers audio HDMI, USB-C, ShadowPlay…
+**NVCleanstall** (techpowerup.com/download/nvcleanstall) permet de reconstruire
+un installeur **sur mesure** qui ne contient que ce dont vous avez besoin.
+
+**Mode d'emploi :**
+
+1. Lancez NVCleanstall (aucune installation requise, exécutable portable).
+2. Laissez-le **détecter le meilleur driver** pour votre carte, ou choisissez une version précise.
+3. **Décochez tout ce qui est superflu** :
+      - ❌ NVIDIA App / GeForce Experience (si vous ne streamez pas)
+      - ❌ Telemetry (télémétrie)
+      - ❌ Drivers audio HDMI (si votre écran n'a pas de haut-parleurs utilisés)
+      - ❌ USB-C, PhysX (gardez PhysX uniquement si vos jeux l'exigent — la plupart des jeux modernes non)
+4. Gardez au minimum : **Display Driver** (obligatoire) et éventuellement **HD Audio** selon votre setup.
+5. Installez le package généré, redémarrez.
+
+!!! tip "Gain réel"
+    Moins de services en arrière-plan = moins de RAM consommée,
+    moins de processus qui se réveillent pendant une partie.
+    Combinez NVCleanstall **après** un passage de DDU pour une base vraiment propre.
+
+!!! warning "Sans NVIDIA App / GeForce Experience"
+    Vous perdez la mise à jour automatique des drivers et les overlays ShadowPlay/Ansel.
+    Il faudra vérifier les nouveaux drivers **manuellement** (relancez simplement
+    NVCleanstall de temps en temps : il détecte les nouvelles versions).
+
+### NVIDIA Profile Inspector — le panneau de contrôle débloqué
+
+**NVIDIA Profile Inspector** (github.com/Orbmu2k/nvidiaProfileInspector) donne accès
+à **tous les réglages cachés des profils de drivers NVIDIA**, bien au-delà de ce
+que le NVIDIA Control Panel affiche. Chaque jeu possède un profil driver interne :
+cet outil permet de le modifier finement.
+
+**Réglages utiles pour le gaming compétitif :**
+
+| Réglage | Valeur recommandée | Effet |
+|---------|--------------------|-------|
+| **Ultra Low Latency Mode** | `Ultra` (ou géré par le jeu) | Réduit la file d'attente de rendu → moins de latence d'entrée |
+| **Maximum Pre-Rendered Frames** | `1` | Une seule image en attente → input lag minimal |
+| **Shader Cache Size** | `10 GB` ou `Unlimited` | Évite les saccades de compilation de shaders |
+| **Texture filtering – Quality** | `High performance` | Priorise les performances sur la qualité de filtrage |
+| **Power management mode** | `Prefer maximum performance` | Le GPU ne descend plus en fréquence entre les scènes |
+| **Preferred refresh rate** | `Highest available` | Force le taux de rafraîchissement maximal |
+| **Vertical Sync** | `Off` (gérez en jeu) | Évite la latence de la VSync globale |
+
+**Mode d'emploi :**
+
+1. Téléchargez l'archive, extrayez, lancez `nvidiaProfileInspector.exe` (portable).
+2. En haut, choisissez le **profil du jeu** concerné dans la liste déroulante
+   (ou `_GLOBAL_DRIVER_PROFILE` pour appliquer à tout).
+3. Modifiez les valeurs, cliquez sur **« Apply changes »** en haut à droite.
+4. Relancez le jeu — pas de redémarrage nécessaire.
+
+!!! warning "Modifiez profil par profil, jamais tout d'un coup"
+    Un réglage qui fluidifie un jeu peut en casser un autre (plantage, artefacts).
+    Notez la valeur d'origine avant chaque changement : le bouton **« Restore »**
+    remet le profil aux valeurs NVIDIA par défaut.
+
+!!! note "Conflit possible avec le NVIDIA Control Panel"
+    Si vous réglez une option ici, laissez-la sur **« Laisser l'application 3D décider »**
+    dans le Control Panel pour éviter que les deux se contredisent.
+
 ### Chipset — souvent oublié, jamais inutile
 
 - **AMD** : installez le dernier **AMD Chipset Driver** (gère le parking des cœurs sur Ryzen, critique sur les X3D).
@@ -194,6 +260,8 @@ netsh int tcp set supplemental custom
 
 | Outil | Rôle |
 |-------|------|
+| **NVCleanstall** | Installation de drivers NVIDIA allégés, sans télémétrie ni composants inutiles |
+| **NVIDIA Profile Inspector** | Réglages avancés et cachés des profils de drivers NVIDIA (latence, cache shaders…) |
 | **MSI Afterburner + RivaTuner** | Monitoring temps réel + limiteur FPS (plafonnez 2-3 FPS sous le taux de rafraîchissement) |
 | **CapFrameX** / **PresentMon** | Analyse des frametimes — la mesure objective avant/après chaque tweak |
 | **DDU** | Réinstallation propre des drivers GPU |
@@ -203,7 +271,7 @@ netsh int tcp set supplemental custom
 | **CrystalDiskMark** | Vérifie que votre SSD NVMe tourne à pleine vitesse |
 
 !!! tip "Routine de maintenance mensuelle"
-    1. Vérifier les mises à jour GPU + chipset.
+    1. Vérifier les mises à jour GPU (relancez NVCleanstall pour voir les nouveaux drivers) + chipset.
     2. Nettoyer les fichiers temporaires.
     3. Contrôler les températures sous HWiNFO après 30 min de jeu (GPU > 83 °C ou CPU > 95 °C = problème **physique**, pas logiciel).
     4. Relancer un benchmark CapFrameX sur votre jeu de référence.
@@ -214,9 +282,9 @@ netsh int tcp set supplemental custom
 
 | Priorité | Action | Gain attendu |
 |----------|--------|--------------|
-| 🥇 | Drivers GPU/chipset propres (DDU si besoin) | Énorme |
+| 🥇 | Drivers GPU/chipset propres (DDU + NVCleanstall pour NVIDIA) | Énorme |
 | 🥈 | Plan d'alimentation haute performance + planification GPU matérielle | Fort |
-| 🥉 | Limiteur FPS (RivaTuner) pour lisser les frametimes | Fort (fluidité) |
+| 🥉 | Limiteur FPS (RivaTuner) + Ultra Low Latency (Profile Inspector) | Fort (fluidité / latence) |
 | 4 | Registre (responsiveness, throttling réseau) | Modéré |
 | 5 | BCDEdit (timer, TSC) | Variable — à tester |
 
