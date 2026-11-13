@@ -1,0 +1,51 @@
+[project]
+name = "Guide Windows 11"
+site_description = "Guide complet d'installation, d'optimisation et de gestion de Windows 11 (24H2 → 26H2) pour débutants"
+site_url = "https://vignemail1.github.io/guide-windows11/"
+repo_url = "https://github.com/vignemail1/guide-windows11"
+docs_dir = "docs"
+site_dir = "site"
+
+[project.theme]
+name = "zensical"
+language = "fr"
+palette = "default"
+font = "Inter"
+
+[project.theme.features]
+navigation_tabs = true
+navigation_top = true
+toc_integrate = false
+content_action = true
+
+[markdown.extensions]
+enabled = [
+  "admonition",
+  "attr_list",
+  "footnotes",
+  "md_in_html",
+  "tables",
+  "pymdownx.details",
+  "pymdownx.superfences",
+  "pymdownx.highlight",
+  "pymdownx.tabbed",
+  "pymdownx.tasklist",
+]
+
+[nav]
+"Accueil" = "index.md"
+"Installation" = [
+  "Préparation" = "installation/preparation.md",
+  "Installation avec compte local" = "installation/compte-local.md",
+  "Installation des pilotes" = "installation/pilotes.md",
+]
+"Optimisation" = [
+  "Chris Titus Tech WinUtil" = "optimisation/chris-titus.md",
+  "O&O ShutUp10++" = "optimisation/shutup10.md",
+]
+"Trucs et astuces" = [
+  "Diagnostic" = "astuces/diagnostic.md",
+  "Mises à jour et maintenance" = "astuces/maintenance.md",
+  "Commandes utiles" = "astuces/commandes.md",
+]
+"Déploiement CI/CD" = "cicd.md"
