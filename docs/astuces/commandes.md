@@ -1,6 +1,6 @@
 # Commandes utiles au quotidien
 
-## Commandes « Exécuter » (`Win + R`)
+## Commandes « Exécuter » (++win+R++)
 
 | Commande | Effet |
 |---|---|
@@ -19,15 +19,18 @@
 
 | Raccourci | Effet |
 |---|---|
-| `Win + E` | Explorateur de fichiers |
-| `Win + I` | Paramètres |
-| `Win + X` | Menu avancé (Terminal admin, Gestionnaire…) |
-| `Win + V` | Historique du presse-papiers |
-| `Win + Maj + S` | Capture d'écran partielle |
-| `Win + .` | Émojis |
-| `Win + flèches` | Ancrer les fenêtres (Snap) |
-| `Ctrl + Maj + Échap` | Gestionnaire des tâches |
-| `Alt + F4` | Fermer l'application (arrêter le PC depuis le bureau) |
+| ++win+e++ | Explorateur de fichiers |
+| ++win+i++ | Paramètres |
+| ++win+x++ | Menu avancé (Terminal admin, Gestionnaire…) |
+| ++win+v++ | Historique du presse-papiers |
+| ++win+shift+s++` | Capture d'écran partielle |
+| ++win+num-separator++| Émojis |
+| ++win+up++ | Ancrer les fenêtres (Snap) |
+| ++win+down++ | Ancrer les fenêtres (Snap) |
+| ++win+left++ | Ancrer les fenêtres (Snap) |
+| ++win+right++ | Ancrer les fenêtres (Snap) |
+| ++ctrl+shift+esc++ | Gestionnaire des tâches |
+| ++alt+f4++ | Fermer l'application (arrêter le PC depuis le bureau) |
 
 ## PowerShell : exemples concrets
 
@@ -51,7 +54,7 @@ Get-Process | Sort-Object WorkingSet -Descending | Select-Object -First 10
 
 ## Compte local : gérer les utilisateurs
 
-- `Win + R` → `netplwiz` : gérer les comptes, désactiver la demande de mot de passe au démarrage.
+- ++win+r++ → `netplwiz` : gérer les comptes, désactiver la demande de mot de passe au démarrage.
 - Paramètres → Comptes : ajouter un compte **local** pour un autre membre de la famille (Autres utilisateurs → « Je ne connais pas les informations de connexion » → « Ajouter un utilisateur sans compte Microsoft »).
 
 !!! tip "Sécurité minimale"

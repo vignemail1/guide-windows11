@@ -19,21 +19,26 @@
 6. **Décidez** — gain ≥ 3 % : gardez. Aucun gain ou régression : revenez en arrière.
 
 !!! tip "Tenez un carnet de bord"
-    Un simple fichier texte ou tableur avec : date, tweak appliqué, outil utilisé, résultats des 3 runs, moyenne, décision. En cas de problème des semaines plus tard, vous saurez exactement ce qui a été changé.
+    Un simple fichier texte ou tableur avec :
+    date, tweak appliqué, outil utilisé, résultats des 3 runs, moyenne, décision.
+    En cas de problème des semaines plus tard,
+    vous saurez exactement ce qui a été changé.
 
 ---
 
 ## 🎮 CapFrameX — le frametime, la métrique qui compte
 
-Le FPS moyen seul est trompeur. Ce qui se **ressent** en jeu, ce sont les **frametimes** (le temps de rendu de chaque image) et leurs irrégularités. CapFrameX les enregistre proprement.
+Le FPS moyen seul est trompeur. Ce qui se **ressent** en jeu, ce sont
+les **frametimes** (le temps de rendu de chaque image) et leurs irrégularités.
+CapFrameX les enregistre proprement.
 
 ### Installation et configuration
 
 1. Téléchargez CapFrameX depuis son site officiel (capframex.com) et installez-le.
 2. Ouvrez l'onglet **Capture** et configurez :
-   - **Capture hotkey** : une touche dédiée, par ex. `F11` (pour démarrer/arrêter la capture).
-   - **Capture time** : 20 secondes est un bon compromis (laissez 0 pour un arrêt manuel).
-   - Activez l'**overlay** pour voir le compte à rebours de capture en jeu.
+    - **Capture hotkey** : une touche dédiée, par ex. ++f11++ (pour démarrer/arrêter la capture).
+    - **Capture time** : 20 secondes est un bon compromis (laissez 0 pour un arrêt manuel).
+    - Activez l'**overlay** pour voir le compte à rebours de capture en jeu.
 3. Choisissez votre **scène de référence** : un endroit du jeu que vous pouvez reproduire à l'identique (benchmark intégré du jeu, spawn fixe, trajet en véhicule…).
 
 ### Protocole de capture
@@ -46,12 +51,12 @@ Le FPS moyen seul est trompeur. Ce qui se **ressent** en jeu, ce sont les **fram
 
 Dans l'onglet **Analysis**, concentrez-vous sur quatre indicateurs :
 
-| Indicateur | Ce qu'il mesure | Comment le lire |
-|------------|-----------------|------------------|
-| **Average FPS** | Fluidité générale | Utile mais insuffisant seul |
-| **1 % low (P1)** | Les 1 % d'images les plus lentes | **Le plus important** : un bon 1 % low = jeu fluide ressenti, même si la moyenne est identique |
-| **0.1 % low (P0.1)** | Les micro-saccades franches | Si le 0.1 % low s'effondre → stuttering (souvent mémoire standby, shaders, driver) |
-| **Frametime graph** | Régularité image par image | Cherchez une courbe **plate** ; les pics répétés = saccades perceptibles |
+| Indicateur           | Ce qu'il mesure                  | Comment le lire                                                                                |
+| -------------------- | -------------------------------- | ---------------------------------------------------------------------------------------------- |
+| **Average FPS**      | Fluidité générale                | Utile mais insuffisant seul                                                                    |
+| **1 % low (P1)**     | Les 1 % d'images les plus lentes | **Le plus important** : un bon 1 % low = jeu fluide ressenti, même si la moyenne est identique |
+| **0.1 % low (P0.1)** | Les micro-saccades franches      | Si le 0.1 % low s'effondre → stuttering (souvent mémoire standby, shaders, driver)             |
+| **Frametime graph**  | Régularité image par image       | Cherchez une courbe **plate** ; les pics répétés = saccades perceptibles                       |
 
 !!! example "Exemple concret"
     - **Avant tweak** : moyenne 118 FPS, 1 % low à 74 FPS, pics de frametime à 28 ms.
@@ -76,22 +81,26 @@ PresentMon (d'Intel, open source) enregistre les mêmes données de présentatio
 
 ## 🏆 3DMark et benchmarks synthétiques
 
-Les benchmarks synthétiques ne reproduisent pas un jeu réel, mais ils sont **parfaitement reproductibles** — idéaux pour valider qu'un changement global (drivers, BCDEdit, plan d'alimentation) n'a rien cassé.
+Les benchmarks synthétiques ne reproduisent pas un jeu réel, mais ils sont
+**parfaitement reproductibles** — idéaux pour valider qu'un changement global
+(drivers, BCDEdit, plan d'alimentation) n'a rien cassé.
 
-| Outil | Usage recommandé |
-|-------|------------------|
+| Outil                      | Usage recommandé                                                               |
+| -------------------------- | ------------------------------------------------------------------------------ |
 | **3DMark Time Spy** (DX12) | Référence GPU/CPU gaming — un score qui chute après un tweak = signal d'alerte |
-| **3DMark Steel Nomad** | API modernes, utile sur configurations récentes |
-| **Unigine Superposition** | Gratuit, bon test de stabilité + boucle pour le monitoring thermique |
-| **Cinebench** | CPU pur — vérifie que le processeur monte bien en fréquence et ne throttle pas |
+| **3DMark Steel Nomad**     | API modernes, utile sur configurations récentes                                |
+| **Unigine Superposition**  | Gratuit, bon test de stabilité + boucle pour le monitoring thermique           |
+| **Cinebench**              | CPU pur — vérifie que le processeur monte bien en fréquence et ne throttle pas |
 
-**Protocole** : 3 runs consécutifs, écart-type inférieur à 1 %, comparer la moyenne. Un écart de moins de 2 % entre deux configurations est du bruit, pas un gain.
+**Protocole** : 3 runs consécutifs, écart-type inférieur à 1 %, comparer la moyenne.
+Un écart de moins de 2 % entre deux configurations est du bruit, pas un gain.
 
 ---
 
 ## 💾 CrystalDiskMark — vérifier le stockage
 
-Des temps de chargement lents ou des textures qui popent peuvent venir d'un SSD qui ne tourne pas à sa vitesse nominale.
+Des temps de chargement lents ou des textures qui popent peuvent venir d'un
+SSD qui ne tourne pas à sa vitesse nominale.
 
 ### Procédure
 
@@ -101,17 +110,18 @@ Des temps de chargement lents ou des textures qui popent peuvent venir d'un SSD 
 
 ### Interprétation
 
-| Observation | Diagnostic probable |
-|-------------|---------------------|
-| Séquentiel à ~50 % du nominal sur NVMe | Le SSD est branché sur un slot PCIe ×2, ou en mode PCIe 3.0 au lieu de 4.0 → vérifier le slot et le BIOS |
-| 4K aléatoire très faible | SSD presque plein (> 85 %) → libérer de l'espace ; ou TRIM désactivé (`fsutil behavior query DisableDeleteNotify` doit retourner `0`) |
-| Scores qui s'effondrent après quelques minutes | Throttling thermique du SSD → vérifier la présence d'un dissipateur |
+| Observation                                    | Diagnostic probable                                                                                                                   |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Séquentiel à ~50 % du nominal sur NVMe         | Le SSD est branché sur un slot PCIe ×2, ou en mode PCIe 3.0 au lieu de 4.0 → vérifier le slot et le BIOS                              |
+| 4K aléatoire très faible                       | SSD presque plein (> 85 %) → libérer de l'espace ; ou TRIM désactivé (`fsutil behavior query DisableDeleteNotify` doit retourner `0`) |
+| Scores qui s'effondrent après quelques minutes | Throttling thermique du SSD → vérifier la présence d'un dissipateur                                                                   |
 
 ---
 
 ## 🌡️ HWiNFO64 — surveiller pendant le bench
 
-Un benchmark sans monitoring thermique ne vaut rien : si le GPU throttle à 83 °C, vous mesurez la chaleur, pas le tweak.
+Un benchmark sans monitoring thermique ne vaut rien :
+si le GPU throttle à 83 °C, vous mesurez la chaleur, pas le tweak.
 
 **Capteurs à afficher pendant vos runs** (mode Sensors-only) :
 
@@ -121,7 +131,9 @@ Un benchmark sans monitoring thermique ne vaut rien : si le GPU throttle à 83 �
 - **Effective Clock** CPU/GPU : fréquences réelles, plus fiables que les fréquences affichées.
 
 !!! warning "Ordre de diagnostic"
-    Si vos scores sont bas : regardez **d'abord** les températures et les flags de throttling dans HWiNFO, **ensuite** seulement cherchez côté logiciel. Une pâte thermique sèche fausse tous les benchmarks du monde.
+    Si vos scores sont bas : regardez **d'abord** les températures et les flags
+    de throttling dans HWiNFO, **ensuite** seulement cherchez côté logiciel.
+    Une pâte thermique sèche fausse tous les benchmarks du monde.
 
 ---
 
@@ -139,13 +151,15 @@ Un benchmark sans monitoring thermique ne vaut rien : si le GPU throttle à 83 �
 
 ## 📚 Résumé : quel outil pour quelle question ?
 
-| Question | Outil | Métrique clé |
-|----------|-------|--------------|
-| « Mon jeu est-il plus fluide ? » | CapFrameX | 1 % low, courbe de frametime |
-| « Qui me bride : CPU ou GPU ? » | PresentMon (GPU Busy) | Écart GPU Busy / Frame Time |
-| « Mon tweak global n'a rien cassé ? » | 3DMark | Score moyen sur 3 runs |
-| « Mon CPU monte-t-il bien en fréquence ? » | Cinebench + HWiNFO | Score + flags de throttling |
-| « Mon SSD est-il à pleine vitesse ? » | CrystalDiskMark | SEQ1M et RND4K vs specs |
-| « Suis-je limité par la chaleur ? » | HWiNFO64 | Thermal Throttling flags |
+| Question                                   | Outil                 | Métrique clé                 |
+| ------------------------------------------ | --------------------- | ---------------------------- |
+| « Mon jeu est-il plus fluide ? »           | CapFrameX             | 1 % low, courbe de frametime |
+| « Qui me bride : CPU ou GPU ? »            | PresentMon (GPU Busy) | Écart GPU Busy / Frame Time  |
+| « Mon tweak global n'a rien cassé ? »      | 3DMark                | Score moyen sur 3 runs       |
+| « Mon CPU monte-t-il bien en fréquence ? » | Cinebench + HWiNFO    | Score + flags de throttling  |
+| « Mon SSD est-il à pleine vitesse ? »      | CrystalDiskMark       | SEQ1M et RND4K vs specs      |
+| « Suis-je limité par la chaleur ? »        | HWiNFO64              | Thermal Throttling flags     |
 
-> 📊 **Règle d'or** : un tweak qui ne montre aucun gain **mesurable et reproductible** sur votre machine n'a aucune raison d'être conservé — quelle que soit sa popularité sur Internet.
+> 📊 **Règle d'or** : un tweak qui ne montre aucun gain
+> **mesurable et reproductible** sur votre machine n'a aucune raison
+> d'être conservé — quelle que soit sa popularité sur Internet.

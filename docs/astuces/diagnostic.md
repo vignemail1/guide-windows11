@@ -1,6 +1,6 @@
 # Diagnostic : connaître l'état de son PC
 
-Commandes à taper dans **PowerShell / Terminal** (certaines en administrateur) ou via `Win + R`.
+Commandes à taper dans **PowerShell / Terminal** (certaines en administrateur) ou via ++win+r++.
 
 ## Santé du système
 
@@ -43,7 +43,7 @@ Get-NetAdapter         # État des cartes réseau
 
 ## Performances
 
-- `Ctrl + Maj + Échap` : **Gestionnaire des tâches** → onglet *Performance* (CPU, RAM, disque).
+- ++ctrl+shift+esc++ : **Gestionnaire des tâches** → onglet *Performance* (CPU, RAM, disque).
 - Onglet *Démarrage* : désactivez les programmes inutiles au démarrage (gain de temps notable).
 - `perfmon /rel` : **Moniteur de fiabilité** — historique des plantages et erreurs.
 

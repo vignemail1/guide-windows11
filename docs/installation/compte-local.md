@@ -29,7 +29,7 @@ Rien d'autre à faire.
 
 Méthode la plus fiable sur les versions récentes : le PC **ne doit pas être connecté à Internet** (débranchez le câble Ethernet, ne vous connectez pas au Wi-Fi).
 
-1. À l'écran de connexion réseau/compte Microsoft, appuyez sur `Maj + F10`.
+1. À l'écran de connexion réseau/compte Microsoft, appuyez sur ++shift+f10++.
 2. Tapez :
 
     ```powershell
@@ -40,7 +40,7 @@ Méthode la plus fiable sur les versions récentes : le PC **ne doit pas être c
 4. Renseignez le nom d'utilisateur et le mot de passe, puis poursuivez l'installation.
 
 !!! tip
-    Si le PC est déjà connecté en Wi-Fi via l'OOBE, ouvrez `Maj + F10` et tapez `ipconfig /release` pour couper la connexion avant la commande.
+    Si le PC est déjà connecté en Wi-Fi via l'OOBE, ouvrez ++shift+f10++ et tapez `ipconfig /release` pour couper la connexion avant la commande.
 
 ## Méthode 4 : Modifier le registre (alternative 25H2+)
 

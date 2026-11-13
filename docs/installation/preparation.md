@@ -24,17 +24,24 @@
 1. Téléchargez [Rufus](https://rufus.ie) (gratuit, portable).
 2. Sélectionnez la clé USB et l'ISO Windows 11.
 3. Cliquez sur **Démarrer**. Une fenêtre « Personnaliser l'installation » apparaît :
-   - ✅ **Supprimer l'exigence d'un compte Microsoft en ligne** ← *cochez cette case !*
-   - ✅ Créer un compte local avec le nom : *(votre prénom)*
-   - ✅ Désactiver la collecte de données
+    - ✅ **Supprimer l'exigence d'un compte Microsoft en ligne** ← *cochez cette case !*
+    - ✅ Créer un compte local avec le nom : *(votre prénom)*
+    - ✅ Désactiver la collecte de données
 4. Validez : la clé installera Windows **directement avec un compte local**, sans manipulation supplémentaire.
 
 !!! tip "Astuce"
-    Avec Rufus 4.x et cette option cochée, aucune des méthodes de contournement de la page suivante ne sera nécessaire. C'est la méthode la plus simple pour un débutant.
+    Avec Rufus 4.x et cette option cochée, aucune des méthodes de contournement
+    de la page suivante ne sera nécessaire.
+    C'est la méthode la plus simple pour un débutant.
 
 ## Démarrer sur la clé USB
 
 1. Branchez la clé sur le PC cible éteint.
 2. Allumez le PC et appuyez sur la touche de **menu de démarrage** selon la marque :
-   - ASUS : `F8` ou `Échap` · MSI : `F11` · Gigabyte : `F12` · HP : `F9` · Dell : `F12` · Lenovo : `F12`
+    - ASUS : ++f8++ ou ++esc++
+    - MSI : ++f11++
+    - Gigabyte : ++f12++
+    - HP : ++f9++
+    - Dell : ++f12++
+    - Lenovo : ++f12++
 3. Sélectionnez la clé USB dans la liste.

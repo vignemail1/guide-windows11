@@ -29,8 +29,8 @@ Cochez et installez en un clic vos logiciels (navigateur, 7-Zip, VLC, Notepad++,
 
 ## Onglet « Config » et « Updates »
 
-- **Config** : activer les fonctions Windows utiles (sandbox, etc.).
-- **Updates** : régler la politique de mise à jour. Le réglage **« Security »** retarde les mises à jour de fonctionnalités tout en conservant les mises à jour de sécurité — recommandé pour un débutant.
+- **Config** : activer les fonctions Windows utiles (sandbox, etc.). Les réglages **« Standard »** ou **« Advanced »** sont équilibrés. Assurez vous de désactiver toute Telemetry.
+- **Updates** : régler la politique de mise à jour. Le réglage **« Recommanded »** retarde les mises à jour de fonctionnalités tout en conservant les mises à jour de sécurité — recommandé pour un débutant.
 
 !!! warning "Prudence"
     - Créez un **point de restauration** avant (WinUtil le propose).
