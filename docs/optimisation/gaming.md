@@ -3,17 +3,29 @@
 > **Optimisation avancée de Windows 11 pour les jeux vidéo compétitifs et immersifs.**
 
 !!! danger "Avertissement — À lire avant toute modification"
-    Les réglages décrits sur cette page touchent au cœur de Windows (base de registre, options de démarrage, drivers). Ils sont **fournis à titre indicatif**, sans garantie : chaque machine et chaque configuration réagit différemment.
+    Les réglages décrits sur cette page touchent au cœur
+    de Windows (base de registre, options de démarrage, drivers).
+    Ils sont **fournis à titre indicatif**, sans garantie :
+    chaque machine et chaque configuration réagit différemment.
 
-    **Vous les appliquez à vos risques et périls.** L'auteur de ce guide décline toute responsabilité en cas de plantage, de perte de données, de baisse de performances ou de tout autre désagrément résultant de l'application de ces réglages.
+    **Vous les appliquez à vos risques et périls.** 
+    L'auteur de ce guide décline toute responsabilité en cas de plantage,
+    de perte de données, de baisse de performances
+    ou de tout autre désagrément résultant de l'application de ces réglages.
 
-    **Avant de commencer, sauvegardez votre système** (point de restauration minimum, image complète idéalement) et testez chaque modification **une par une**. Si quelque chose ne fonctionne pas : revenez à votre sauvegarde, cherchez à comprendre, mais ne continuez pas à empiler les réglages à l'aveugle.
+    **Avant de commencer, sauvegardez votre système**
+    (point de restauration minimum, image complète idéalement) et testez
+    chaque modification **une par une**.
+    Si quelque chose ne fonctionne pas :
+    revenez à votre sauvegarde, cherchez à comprendre,
+    mais ne continuez pas à empiler les réglages à l'aveugle.
 
 ---
 
 ## 🧭 Philosophie
 
-Le tuning gaming ne consiste **pas** à désactiver tout Windows à l'aveugle. L'approche correcte :
+Le tuning gaming ne consiste **pas** à désactiver tout Windows à l'aveugle.
+L'approche correcte :
 
 1. **Mesurez d'abord** — installez un benchmark (CapFrameX, 3DMark) et notez vos performances de base.
 2. **Changez une chose à la fois** — sinon vous ne saurez jamais ce qui a fonctionné (ou cassé).
@@ -32,7 +44,8 @@ Le tuning gaming ne consiste **pas** à désactiver tout Windows à l'aveugle. L
 | **Tous** | **DDU** (guru3d.com) | En cas de souci : désinstallation totale en **Mode sans échec**, puis réinstallation propre |
 
 !!! tip "DDU règle la majorité des problèmes de performances GPU"
-    Une installation de driver par-dessus une autre laisse des résidus. DDU permet de repartir de zéro.
+    Une installation de driver par-dessus une autre laisse des résidus.
+    DDU permet de repartir de zéro.
 
 ### Chipset — souvent oublié, jamais inutile
 
