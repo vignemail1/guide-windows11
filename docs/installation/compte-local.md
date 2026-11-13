@@ -1,20 +1,25 @@
 # Installation avec compte local uniquement
 
-Depuis Windows 11 22H2, Microsoft impose un compte Microsoft à l'installation (éditions Famille et Professionnel incluses en 24H2+). Voici **toutes les méthodes** pour l'éviter, de la plus simple à la plus récente.
+Depuis Windows 11 22H2, Microsoft impose un compte Microsoft à l'installation (éditions Famille et Professionnel incluses en 24H2+).
+Voici **toutes les méthodes** pour l'éviter, de la plus simple à la plus récente.
 
 ## Méthode 1 : Rufus (recommandée) ⭐
 
-Cochez l'option « Supprimer l'exigence d'un compte Microsoft » lors de la création de la clé (voir [Préparation](preparation.md)). L'installation proposera directement la création d'un **compte local**. Rien d'autre à faire.
+Cochez l'option « Supprimer l'exigence d'un compte Microsoft » lors de la création de la clé (voir [Préparation](preparation.md)).
+L'installation proposera directement la création d'un **compte local**.
+Rien d'autre à faire.
 
 ## Méthode 2 : La commande `OOBE\BYPASSNRO` (24H2 et versions antérieures)
 
 !!! warning "Fonctionne sur 24H2 — retirée progressivement dans les builds 25H2/26H2"
 
 1. Procédez à l'installation jusqu'à l'écran **« Connectons-vous à un réseau »**.
-2. Appuyez sur `Maj + F10` pour ouvrir l'invite de commandes.
+2. Appuyez sur ++shift+f10++ pour ouvrir l'invite de commandes.
 3. Tapez :
 
-       OOBE\BYPASSNRO
+    ```powershell
+    OOBE\BYPASSNRO
+    ```
 
 4. Le PC redémarre. De retour à l'écran réseau, une option **« Je n'ai pas d'Internet »** apparaît.
 5. Cliquez dessus → **« Continuer avec une installation limitée »**.
@@ -27,7 +32,9 @@ Méthode la plus fiable sur les versions récentes : le PC **ne doit pas être c
 1. À l'écran de connexion réseau/compte Microsoft, appuyez sur `Maj + F10`.
 2. Tapez :
 
-       start ms-cxh:localonly
+    ```powershell
+    start ms-cxh:localonly
+    ```
 
 3. Une fenêtre de création de **compte local** s'ouvre directement.
 4. Renseignez le nom d'utilisateur et le mot de passe, puis poursuivez l'installation.
@@ -39,10 +46,12 @@ Méthode la plus fiable sur les versions récentes : le PC **ne doit pas être c
 
 Si `OOBE\BYPASSNRO` est bloqué :
 
-1. `Maj + F10` → tapez `regedit`.
+1. ++shift+f10++ → tapez `regedit`.
 2. Naviguez jusqu'à :
 
-       HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE
+    ```text
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE
+    ```
 
 3. Créez une valeur **DWORD (32 bits)** nommée `BypassNRO` avec la valeur `1`.
 4. Fermez, tapez `shutdown /r /t 0` pour redémarrer, puis l'option « Je n'ai pas d'Internet » sera disponible.

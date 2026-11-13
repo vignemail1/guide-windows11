@@ -18,10 +18,10 @@ Cochez et installez en un clic vos logiciels (navigateur, 7-Zip, VLC, Notepad++,
 
 1. Cliquez sur le bouton **« Desktop »** ou **« Laptop »** selon votre machine : cela sélectionne automatiquement les réglages **recommandés et sûrs**.
 2. Parmi les réglages clés appliqués :
-   - Désactivation de la **télémétrie** et du pistage publicitaire,
-   - Désactivation de **Copilot / Recall** et autres **fonctionnalités IA**,
-   - Désactivation des suggestions et publicités dans le menu Démarrer,
-   - Ajustements d'interface (afficher les extensions de fichiers, menus classiques).
+    - Désactivation de la **télémétrie** et du pistage publicitaire,
+    - Désactivation de **Copilot / Recall** et autres **fonctionnalités IA**,
+    - Désactivation des suggestions et publicités dans le menu Démarrer,
+    - Ajustements d'interface (afficher les extensions de fichiers, menus classiques).
 3. Cliquez sur **« Run Tweaks »**.
 
 !!! info "Fonctionnalités IA désactivées"

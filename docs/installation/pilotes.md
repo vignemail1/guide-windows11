@@ -13,19 +13,19 @@ Une fois sur le bureau (et maintenant connecté à Internet), installez les pilo
 
 Téléchargez sur le site du fabricant de votre PC ou carte mère :
 
-| Pilote | Priorité | Où |
-|---|---|---|
-| **Chipset** (Intel INF / AMD Chipset) | ⭐⭐⭐ En premier | Site Intel / AMD |
-| **Carte graphique** (NVIDIA / AMD / Intel) | ⭐⭐⭐ | nvidia.com, amd.com, intel.com |
-| **Réseau (LAN + Wi-Fi)** | ⭐⭐ | Site du fabricant du PC |
-| **Audio** | ⭐ | Site du fabricant |
-| **Bluetooth, lecteur d'empreinte, webcam** | ⭐ | Site du fabricant |
+| Pilote                                     | Priorité          | Où                             |
+| ------------------------------------------ | ----------------- | ------------------------------ |
+| **Chipset** (Intel INF / AMD Chipset)      | ⭐⭐⭐ En premier | Site Intel / AMD               |
+| **Carte graphique** (NVIDIA / AMD / Intel) | ⭐⭐⭐            | nvidia.com, amd.com, intel.com |
+| **Réseau (LAN + Wi-Fi)**                   | ⭐⭐              | Site du fabricant du PC        |
+| **Audio**                                  | ⭐                | Site du fabricant              |
+| **Bluetooth, lecteur d'empreinte, webcam** | ⭐                | Site du fabricant              |
 
 !!! tip "Liens utiles"
     - NVIDIA : <https://www.nvidia.fr/Download/index.aspx?lang=fr>
     - AMD : <https://www.amd.com/support>
-    - Intel (détection auto) : *Intel Driver & Support Assistant*
-    - Utilitaires tout-en-un du fabricant : *MyASUS*, *Lenovo Vantage*, *Dell SupportAssist*, *HP Support Assistant*, *MSI Center*
+    - Intel (détection auto) : _Intel Driver & Support Assistant_
+    - Utilitaires tout-en-un du fabricant : _MyASUS_, _Lenovo Vantage_, _Dell SupportAssist_, _HP Support Assistant_, _MSI Center_
 
 ## 3. Vérifier qu'il ne manque rien
 
@@ -40,4 +40,6 @@ Get-PnpDevice | Where-Object { $_.Status -eq "Error" }
 ```
 
 !!! warning
-    Évitez les logiciels tiers de « mise à jour de pilotes » (Driver Booster, etc.) : sources non fiables et logiciels publicitaires. Restez sur Windows Update + site du fabricant.
+    Évitez les logiciels tiers de « mise à jour de pilotes » (Driver Booster, etc.) :
+    sources non fiables et logiciels publicitaires.
+    Restez sur Windows Update + site du fabricant.
