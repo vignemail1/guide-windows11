@@ -1,8 +1,8 @@
 [project]
 site_name = "Guide Windows 11"
 site_description = "Guide complet d'installation, d'optimisation et de gestion de Windows 11 (24H2 → 26H2) pour débutants"
-site_url = "https://vignemail1.github.io/guide-windows11/"
-repo_url = "https://github.com/vignemail1/guide-windows11"
+# site_url = "https://vignemail1.github.io/guide-windows11/"
+# repo_url = "https://github.com/vignemail1/guide-windows11"
 docs_dir = "docs"
 site_dir = "site"
 
