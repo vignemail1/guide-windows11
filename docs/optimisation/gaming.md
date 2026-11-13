@@ -272,7 +272,11 @@ netsh int tcp set supplemental custom
 | **HWiNFO64**                                | Surveillance capteurs (le throttling thermique est l'ennemi n°1)                          |
 | **CrystalDiskMark**                         | Vérifie que votre SSD NVMe tourne à pleine vitesse                                        |
 
-!!! tip "Routine de maintenance mensuelle" 1. Vérifier les mises à jour GPU (avec NVCleanstall) + chipset. 2. Nettoyer les fichiers temporaires. 3. Contrôler les températures sous HWiNFO après 30 min de jeu (GPU > 83 °C ou CPU > 95 °C = problème **physique**, pas logiciel). 4. Relancer un benchmark CapFrameX sur votre jeu de référence.
+!!! tip "Routine de maintenance mensuelle"
+    1. Vérifier les mises à jour GPU (avec NVCleanstall) + chipset.
+    2. Nettoyer les fichiers temporaires.
+    3. Contrôler les températures sous HWiNFO après 30 min de jeu (GPU > 83 °C ou CPU > 95 °C = problème **physique**, pas logiciel).
+    4. Relancer un benchmark CapFrameX sur votre jeu de référence.
 
 ---
 
